@@ -207,4 +207,35 @@ footer {
     background: #08090c;
     color: #666;
     font-size: 0.9rem;
+}/* MOBIL QURILMALAR UCHUN MOSLASH (RESPONSIVE) */
+@media (max-width: 768px) {
+    header {
+        height: auto !important;
+        flex-direction: column !important;
+        padding: 15px 5% !important;
+        gap: 10px !important;
+    }
+
+    #site-logo {
+        height: 50px !important;
+        transform: none !important;
+    }
+
+    nav ul {
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    nav a {
+        font-size: 14px !important;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero p {
+        font-size: 0.95rem !important;
+    }
 }
