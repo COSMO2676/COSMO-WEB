@@ -1,5 +1,5 @@
 // Telegram Bot sozlamalari
-const TELEGRAM_BOT_TOKEN = 'BOT_TOKENINI_SHUYERGA_YOZING';
+const TELEGRAM_BOT_TOKEN = '8606363844:AAHqMunymcZUXE0zM2ASGzsJwYDGSF-iBmI;
 const TELEGRAM_CHAT_ID = 'CHAT_IDNI_SHUYERGA_YOZING';
 
 document.addEventListener('DOMContentLoaded', () => {
