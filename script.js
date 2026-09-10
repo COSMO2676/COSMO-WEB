@@ -1,24 +1,41 @@
-// Navigatsiya menyusi skroll bo'lganda fonini o'zgartirish
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.background = 'rgba(10, 10, 10, 0.95)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
-    } else {
-        header.style.background = 'rgba(20, 20, 20, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-});
+// Telegram Bot sozlamalari
+const TELEGRAM_BOT_TOKEN = 'BOT_TOKENINI_SHUYERGA_YOZING';
+const TELEGRAM_CHAT_ID = 'CHAT_IDNI_SHUYERGA_YOZING';
 
-// Tugmalarga bosilganda silliq o'tish effekti
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.querySelector('.contact-form');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const phoneOrEmail = contactForm.querySelector('input[type="email"], input[type="tel"]').value;
+            const message = contactForm.querySelector('textarea').value;
+
+            const text = 📥 *Yangi xabar (COSMO WEB)*:\n\n👤 *Ism:* ${name}\n📞 *Aloqa:* ${phoneOrEmail}\n💬 *Xabar:* ${message};
+
+            try {
+                const response = await fetch(https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: text,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Xabaringiz muvaffaqiyatli yuborildi!');
+                    contactForm.reset();
+                } else {
+                    alert('Xabar yuborishda xatolik yuz berdi.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Tarmoqda xatolik yuz berdi.');
+            }
+        });
+    }
 });
