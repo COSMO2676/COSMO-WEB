@@ -3,96 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMO - Premium Digital Studio</title>
+    <title>COSMO Market</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- FontAwesome Ikonkalari -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="logo.jpg" alt="COSMO Logo" id="site-logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Bosh sahifa</a></li>
-                <li><a href="#services">Xizmatlar</a></li>
-                <li><a href="#about">Biz haqimizda</a></li>
-                <li><a href="#portfolio">Mahsulotlar</a></li>
-                <li><a href="#contact">Aloqa</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Eksklyuziv Sovg'alar va Premium Xizmatlar</h1>
-            <p>Biz bilan brendingiz va yaqinlaringiz uchun eng sara sovg'alarni hamda yuqori sifatli yechimlarni topasiz.</p>
-            <a href="#services" class="btn">Xizmatlarni ko'rish</a>
-        </div>
+    <section class="hero">
+        <h1>COSMO Market</h1>
+        <p>Eksklyuziv mahsulotlar va tezkor xizmat ko'rsatish platformasi</p>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="services">
-        <h2>Xizmatlarimiz</h2>
-        <div class="card-container">
-            <div class="card">
-                <i class="fas fa-gift"></i>
-                <h3>VIP Sovg'alar</h3>
-                <p>Har bir mijoz uchun individual yondashuv va eksklyuziv qadoqlash.</p>
+    <!-- MAHSULOTLAR (PRODUCTS) -->
+    <section class="products">
+        <h2>Ommabop Mahsulotlar</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                <h3>VIP Sovg'alar To'plami</h3>
+                <p class="price">250 000 UZS</p>
+                <button class="buy-btn">Sotib olish</button>
             </div>
-            <div class="card">
-                <i class="fas fa-shipping-fast"></i>
-                <h3>Tezkor Etkazish</h3>
-                <p>Shahar bo'ylab va viloyatlarga xavfsiz hamda tez etkazib berish.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-headset"></i>
-                <h3>24/7 Qo'llab-quvvatlash</h3>
-                <p>Menejerlarimiz istalgan vaqtda savollaringizga javob berishadi.</p>
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3>Tezkor Etkazib Berish</h3>
+                <p class="price">Bepul</p>
+                <button class="buy-btn">Buyurtma berish</button>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2>Biz Haqimizda</h2>
-            <p>COSMO brendi — bu premium sifat, zamonaviy dizayn va eksklyuziv sovg'alar olami. Biz har bir buyurtmaga alohida mehr va e'tibor bilan yondashamiz. Maqsadimiz — mijozlarimizga faqat eng yaxshisini ulashish.</p>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO SECTION -->
-    <section id="portfolio" class="portfolio">
-        <h2>Eksklyuziv Mahsulotlar</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="item-box">Premium Box #1</div>
-            </div>
-            <div class="portfolio-item">
-                <div class="item-box">VIP Collection #2</div>
-            </div>
-            <div class="portfolio-item">
-                <div class="item-box">Luxury Set #3</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <h2>Biz Bilan Bog'lanish</h2>
-        <form class="contact-form" onsubmit="return false;">
-            <input type="text" placeholder="Ismingiz" required>
-            <input type="text" placeholder="Telefon raqamingiz" required>
-            <textarea placeholder="Xabaringiz..." rows="4" required></textarea>
-            <button type="submit" class="btn">Yuborish</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 COSMO. Barcha huquqlar himoyalangan.</p>
-    </footer>
+    <!-- 3-RASMDAGI KABI SHAFFOF, BIR QATORLIK NAVIGATSIYA MENYU -->
+    <div class="floating-nav-container">
+        <nav class="glass-nav">
+            <button class="nav-item active" onclick="selectTab(this)">
+                <i class="fa-solid fa-house"></i>
+                <span>Bosh sahifa</span>
+            </button>
+            <button class="nav-item" onclick="selectTab(this)">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Qidiruv</span>
+            </button>
+            <button class="nav-item" onclick="selectTab(this)">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Katalog</span>
+            </button>
+            <button class="nav-item" onclick="selectTab(this)">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Savat</span>
+            </button>
+            <button class="nav-item" onclick="selectTab(this)">
+                <i class="fa-solid fa-user"></i>
+                <span>Profil</span>
+            </button>
+        </nav>
+    </div>
 
     <script src="script.js"></script>
 </body>
