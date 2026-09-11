@@ -2,264 +2,156 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    background-color: #0d0f12;
+    background-color: #0b0c10;
     color: #ffffff;
-    line-height: 1.6;
-}
-
-/* HEADER */
-header {
-    min-height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-    background-color: #121318;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-#site-logo {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-    mix-blend-mode: screen;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-nav a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #f39c12;
+    padding-bottom: 100px;
 }
 
 /* HERO SECTION */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    padding: 120px 20px 60px;
-    background: radial-gradient(circle, #1a1e29 0%, #0d0f12 100%);
+    padding: 60px 20px 30px;
+    background: radial-gradient(circle, #1f2833 0%, #0b0c10 100%);
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #f39c12;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: #a0a0a0;
-    margin-bottom: 30px;
-    max-width: 650px;
+    color: #c5c6c7;
+    font-size: 0.95rem;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 35px;
-    background-color: #f39c12;
+/* MAHSULOTLAR GRID */
+.products {
+    padding: 20px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.products h2 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
     color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    background-color: #d35400;
-    box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
-}
-
-/* SECTIONS BASE */
-section {
-    padding: 80px 8%;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2rem;
-    color: #f39c12;
-    margin-bottom: 30px;
-}
-
-/* SERVICES */
-.card-container {
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: #151821;
-    padding: 30px 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #f39c12;
-}
-
-.card i {
-    font-size: 2.5rem;
-    color: #f39c12;
-    margin-bottom: 15px;
-}
-
-/* ABOUT */
-.about {
-    background: #11131a;
-}
-
-.about-content p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #cccccc;
-}
-
-/* PORTFOLIO */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.item-box {
-    background: #1e222d;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #f39c12;
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* CONTACT */
-.contact {
-    background: #11131a;
-}
-
-.contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 15px;
 }
 
-.contact-form input, .contact-form textarea {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #2a2e3d;
-    background: #1a1d27;
-    color: #fff;
-    font-size: 16px;
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-    outline: none;
-    border-color: #f39c12;
-}
-
-/* FOOTER */
-footer {
+.product-card {
+    background: #1f2833;
+    border-radius: 16px;
+    padding: 15px;
     text-align: center;
-    padding: 20px;
-    background: #08090c;
-    color: #666;
-    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
 }
 
-/* TELEFONLAR UCHUN MAXSUS MOSLASHUV */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 15px 10px;
-        gap: 12px;
-    }
-
-    #site-logo {
-        height: 45px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 15px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    .hero {
-        padding-top: 160px;
-    }
-
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-    }
-}
-/* TUGMA VA KARTOCHKA EFFEKTLARI */
-.btn {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
-.btn:active {
-    transform: scale(0.96);
+.product-img {
+    height: 100px;
+    background: #0b0c10;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-bottom: 12px;
 }
 
-.card {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.product-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    border-color: #f39c12;
-    box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2);
+.price {
+    color: #66fcf1;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-.card:active {
-    transform: translateY(-2px);
+.buy-btn {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background: #f39c12;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 3-RASMDAGI KABI SHAFFOF, SUZUVCHI MENYU (FLOATING GLASS NAV) */
+.floating-nav-container {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 92%;
+    max-width: 480px; /* Telefon va noutbukda bir xil ixcham hajmiy chegara */
+}
+
+.glass-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(20, 22, 30, 0.65); /* Shafof qora fon */
+    backdrop-filter: blur(16px); /* Muzlatilgan oyna effekti */
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    padding: 8px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: #8e8e93;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    white-space: nowrap;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+}
+
+.nav-item span {
+    font-size: 0.68rem;
+    font-weight: 500;
+}
+
+/* AKTIV TUGMA EFFEKTI (3-RASMDAGI NEON NUR) */
+.nav-item.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.nav-item.active i {
+    color: #66fcf1;
+    transform: scale(1.1);
 }
