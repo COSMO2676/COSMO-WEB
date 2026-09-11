@@ -28,19 +28,17 @@
                 <span class="tag">MEGASALE</span>
                 <h2>Kuzgi Chegirmalar!</h2>
                 <p>Barcha aksessuarlar va gadjetlarga -40% gacha</p>
-                <button class="banner-btn" onclick="openPage('catalog-page', document.querySelectorAll('.nav-btn')[2])">Katalogga o'tish</button>
+                <button class="banner-btn" onclick="openPage('catalog-page', 2)">Katalogga o'tish</button>
             </div>
         </section>
 
         <section class="products">
             <div class="section-title">
                 <h2>Ommabop Mahsulotlar</h2>
-                <span class="see-all">Barchasi <i class="fa-solid fa-chevron-right"></i></span>
+                <span class="see-all" onclick="openPage('catalog-page', 2)">Barchasi <i class="fa-solid fa-chevron-right"></i></span>
             </div>
             
-            <div class="product-grid" id="product-container">
-                <!-- JS orqali va dinamik render bo'ladi -->
-            </div>
+            <div class="product-grid" id="product-container"></div>
         </section>
     </main>
 
@@ -50,7 +48,7 @@
             <h2>Mahsulotlarni Qidirish</h2>
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search-input" placeholder="Kuler, Noutbuk, Quloqchin..." oninput="handleSearch()">
+                <input type="text" id="search-input" placeholder="Kuler, Noutbuk, Sichqoncha..." oninput="handleSearch()">
                 <i class="fa-solid fa-xmark clear-btn" onclick="clearSearch()"></i>
             </div>
 
@@ -70,21 +68,20 @@
         <div class="page-content">
             <h2>Kategoriyalar</h2>
             <div class="category-grid">
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-fan"></i></div><span>Kulerlar & Sovutgichlar</span></div>
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div><span>Noutbuklar & PC</span></div>
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div><span>Geyming Aksessuarlar</span></div>
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-headphones"></i></div><span>Audio & Quloqchinlar</span></div>
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-mobile-screen-button"></i></div><span>Smartfonlar</span></div>
-                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-plug"></i></div><span>Krab va Kabellar</span></div>
+                <div class="category-card" onclick="quickSearch('Kuler')"><div class="cat-icon"><i class="fa-solid fa-fan"></i></div><span>Kulerlar & Sovutgichlar</span></div>
+                <div class="category-card" onclick="quickSearch('Noutbuk')"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div><span>Noutbuklar & PC</span></div>
+                <div class="category-card" onclick="quickSearch('Sichqoncha')"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div><span>Geyming Aksessuarlar</span></div>
+                <div class="category-card" onclick="quickSearch('Garnitura')"><div class="cat-icon"><i class="fa-solid fa-headphones"></i></div><span>Audio & Quloqchinlar</span></div>
             </div>
         </div>
-    </main><!-- 4. SAVAT SAHIFASI -->
+    </main>
+
+    <!-- 4. SAVAT SAHIFASI -->
     <main id="cart-page" class="page-section">
         <div class="page-content">
             <h2>Xarid Savati</h2>
             <div class="cart-wrapper">
-                <div class="empty-state" id="cart-empty">
-                    <div class="empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                <div class="empty-state"><div class="empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
                     <h3>Savatingiz bo'sh</h3>
                     <p>Bosh sahifadan mahsulot tanlab savatga qo'shing</p>
                 </div>
@@ -104,38 +101,38 @@
             <div class="profile-menu">
                 <div class="menu-row"><i class="fa-solid fa-box"></i><span>Mening Buyurtmalarim</span><i class="fa-solid fa-angle-right"></i></div>
                 <div class="menu-row"><i class="fa-solid fa-heart"></i><span>Tanlanganlar</span><i class="fa-solid fa-angle-right"></i></div>
-                <div class="menu-row"><i class="fa-solid fa-credit-card"></i><span>To'lov usullari</span><i class="fa-solid fa-angle-right"></i></div>
                 <div class="menu-row"><i class="fa-solid fa-gear"></i><span>Sozlamalar</span><i class="fa-solid fa-angle-right"></i></div>
             </div>
         </div>
     </main>
 
-    <!-- PREMIUM LIQUID GLASS FLOATING NAVIGATSIYA -->
+    <!-- BOTTOM FLOATING NAVIGATSIYA -->
     <div class="bottom-nav-container">
         <nav class="glass-navbar">
-            <button class="nav-btn active" onclick="openPage('home-page', this)">
+            <button class="nav-btn active" onclick="openPage('home-page', 0)">
                 <i class="fa-solid fa-house"></i>
                 <span>Bosh sahifa</span>
             </button>
-            <button class="nav-btn" onclick="openPage('search-page', this)">
+            <button class="nav-btn" onclick="openPage('search-page', 1)">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Qidiruv</span>
             </button>
-            <button class="nav-btn" onclick="openPage('catalog-page', this)">
+            <button class="nav-btn" onclick="openPage('catalog-page', 2)">
                 <i class="fa-solid fa-layer-group"></i>
                 <span>Katalog</span>
             </button>
-            <button class="nav-btn" onclick="openPage('cart-page', this)">
+            <button class="nav-btn" onclick="openPage('cart-page', 3)">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span>Savat</span>
             </button>
-            <button class="nav-btn" onclick="openPage('profile-page', this)">
+            <button class="nav-btn" onclick="openPage('profile-page', 4)">
                 <i class="fa-solid fa-user"></i>
                 <span>Profil</span>
             </button>
         </nav>
     </div>
 
+    <!-- JS FAYL -->
     <script src="script.js"></script>
 </body>
 </html>
