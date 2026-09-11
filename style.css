@@ -6,40 +6,47 @@
 }
 
 body {
-    background-color: #0b0c10;
+    background-color: #0d0e12;
     color: #ffffff;
-    padding-bottom: 100px;
+    padding-bottom: 110px;
+    min-height: 100vh;
 }
 
-/* HERO SECTION */
+/* SAHIFALAR ULANISHI */
+.page-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+.page-content {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* HERO & MAHSULOTLAR */
 .hero {
     text-align: center;
-    padding: 60px 20px 30px;
-    background: radial-gradient(circle, #1f2833 0%, #0b0c10 100%);
+    padding: 50px 20px 20px;
 }
 
 .hero h1 {
-    font-size: 2.2rem;
-    color: #f39c12;
+    font-size: 2rem;
+    color: #ff3b30;
     margin-bottom: 10px;
 }
 
-.hero p {
-    color: #c5c6c7;
-    font-size: 0.95rem;
-}
-
-/* MAHSULOTLAR GRID */
 .products {
     padding: 20px 5%;
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
-}
-
-.products h2 {
-    margin-bottom: 20px;
-    font-size: 1.4rem;
-    color: #fff;
 }
 
 .product-grid {
@@ -48,91 +55,105 @@ body {
     gap: 15px;
 }
 
-.product-card {
-    background: #1f2833;
+.product-card, .category-card {
+    background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     padding: 15px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.product-img {
-    height: 100px;
-    background: #0b0c10;
-    border-radius: 12px;
+.product-img, .empty-state i, .profile-card i {
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
-    color: #f39c12;
-    margin-bottom: 12px;
-}
-
-.product-card h3 {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
+    color: #ff3b30;
 }
 
 .price {
-    color: #66fcf1;
+    color: #ff3b30;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin: 8px 0;
 }
 
 .buy-btn {
     width: 100%;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 10px;
+    border-radius: 10px;
     border: none;
-    background: #f39c12;
-    color: #000;
+    background: #ff3b30;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
 }
 
-/* 3-RASMDAGI KABI SHAFFOF, SUZUVCHI MENYU (FLOATING GLASS NAV) */
+/* QIDIRUV VA BO'LIMLAR */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 18px;
+    border-radius: 20px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* 1 & 2-RASMDAGI KABI LIQUID GLASS NAVIGATSIYA */
 .floating-nav-container {
     position: fixed;
-    bottom: 25px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
     width: 92%;
-    max-width: 480px; /* Telefon va noutbukda bir xil ixcham hajmiy chegara */
+    max-width: 460px;
 }
 
-.glass-nav {
+.liquid-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(20, 22, 30, 0.65); /* Shafof qora fon */
-    backdrop-filter: blur(16px); /* Muzlatilgan oyna effekti */
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 30px;
-    padding: 8px 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.12); /* Oyna effekti */
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 35px;
+    padding: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .nav-item {
     background: transparent;
     border: none;
-    color: #8e8e93;
+    color: #a0a0a0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 10px 12px;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     flex: 1;
-    white-space: nowrap;
 }
 
 .nav-item i {
@@ -140,18 +161,19 @@ body {
 }
 
 .nav-item span {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 500;
 }
 
-/* AKTIV TUGMA EFFEKTI (3-RASMDAGI NEON NUR) */
+/* 2-RASMDAGI KABI QIZIL LIQUID GLOW (NEON NURI) EFFEKTI */
 .nav-item.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 59, 48, 0.25);
+    border: 1px solid rgba(255, 59, 48, 0.6);
+    box-shadow: 0 0 15px rgba(255, 59, 48, 0.5), inset 0 0 10px rgba(255, 59, 48, 0.3);
+    transform: scale(1.05);
 }
 
 .nav-item.active i {
-    color: #66fcf1;
-    transform: scale(1.1);
+    color: #ff3b30;
 }
