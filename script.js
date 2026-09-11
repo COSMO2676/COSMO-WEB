@@ -1,4 +1,4 @@
-// MAHSULOTLAR MA'LUMOTLAR BAZASI
+// MAHSULOTLAR BAZASI
 const productsData = [
     { id: 1, name: "RGB Noutbuk Kuler Sovutgichi", price: "185 000 UZS", discount: "-15%", icon: "fa-fan", rating: 4.9, reviews: 34 },
     { id: 2, name: "Besprovodnoy Geyming Sichqoncha", price: "210 000 UZS", discount: "-20%", icon: "fa-computer-mouse", rating: 4.8, reviews: 52 },
@@ -6,27 +6,37 @@ const productsData = [
     { id: 4, name: "Mехаnik RGB Klaviatura", price: "420 000 UZS", discount: "-25%", icon: "fa-keyboard", rating: 4.7, reviews: 89 },
 ];
 
-// SAHIFALARNI ALMASHTIRISH
-function openPage(pageId, element) {
-    const allPages = document.querySelectorAll('.page-section');
-    allPages.forEach(page => page.classList.remove('active'));
+// SAHIFALARNI ISHONCHLI ALMASHTIRISH FUNKSIYASI
+function openPage(pageId, btnIndex) {
+    // 1. Barcha sahifalarni yashirish
+    const pages = document.querySelectorAll('.page-section');
+    pages.forEach(page => page.classList.remove('active'));
 
+    // 2. Tanlangan sahifani chiqarish
     const selectedPage = document.getElementById(pageId);
     if (selectedPage) {
         selectedPage.classList.add('active');
     }
 
-    const allButtons = document.querySelectorAll('.nav-btn');
-    allButtons.forEach(btn => btn.classList.remove('active'));
-    element.classList.add('active');
+    // 3. Menyudagi aktiv tugmani yangilash
+    const buttons = document.querySelectorAll('.nav-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (buttons[btnIndex]) {
+        buttons[btnIndex].classList.add('active');
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// MAHSULOTLARNI RENDER QILISH
+// MAHSULOTLARNI EKRANGA CHIQARISH
 function renderProducts(items, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
+    if (items.length === 0) {
+        container.innerHTML = <p style="color: #888; grid-column: 1/-1; text-align: center; padding: 20px;">Mahsulot topilmadi</p>;
+        return;
+    }
 
     container.innerHTML = items.map(p => 
         <div class="product-card">
@@ -54,7 +64,7 @@ function toggleFav(btn) {
     btn.classList.toggle('active');
 }
 
-// QIDIRUV FUNKSIYASI
+// QIDIRUV ISHLASH FUNKSIYASI
 function handleSearch() {
     const query = document.getElementById('search-input').value.toLowerCase().trim();
     if (query === "") {
@@ -66,17 +76,25 @@ function handleSearch() {
     renderProducts(filtered, 'search-results');
 }
 
+// TEZKOR QIDIRUV (TAGLAR VA KATALOG UCHUN)
 function quickSearch(keyword) {
-    document.getElementById('search-input').value = keyword;
-    handleSearch();
+    openPage('search-page', 1);
+    const input = document.getElementById('search-input');
+    if (input) {
+        input.value = keyword;
+        handleSearch();
+    }
 }
 
 function clearSearch() {
-    document.getElementById('search-input').value = "";
-    document.getElementById('search-results').innerHTML = "";
+    const input = document.getElementById('search-input');
+    if (input) {
+        input.value = "";
+        document.getElementById('search-results').innerHTML = "";
+    }
 }
 
-// BOSHLANG'ICH YUKLANISH
+// SAHIFA YUKLANGANDA
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(productsData, 'product-container');
 });
