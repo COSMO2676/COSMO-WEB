@@ -1,19 +1,23 @@
-function switchPage(pageId, element) {
-    // 1. Hamma sahifalarni yashirish
-    const pages = document.querySelectorAll('.page-section');
-    pages.forEach(page => page.classList.remove('active'));
+function openPage(pageId, element) {
+    // 1. Barcha sahifalarni yashirish
+    const allPages = document.querySelectorAll('.page-section');
+    allPages.forEach(page => {
+        page.classList.remove('active');
+    });
 
-    // 2. Tanlangan sahifani ko'rsatish
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.add('active');
+    // 2. Bosilgan sahifani chiqarish
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+        selectedPage.classList.add('active');
     }
 
-    // 3. Tugmalarning aktiv holatini o'zgartirish
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
+    // 3. Menyudagi aktiv tugmani yangilash
+    const allButtons = document.querySelectorAll('.nav-btn');
+    allButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
     element.classList.add('active');
 
-    // Sahifani tepaga siljitish
+    // Sahifa tepasiga silliq chiqarish
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
