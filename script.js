@@ -1,17 +1,43 @@
-/* Tugmalar hamma narsaning ustida bo'lishi uchun */
-.glass-navbar {
-    position: relative;
-    z-index: 999999 !important;
-}
+<script>
+    // Sahifani almashtirish funksiyasi
+    function showPage(pageId, el) {
+        // Barcha sahifalarni yashirish
+        document.querySelectorAll('.page-section').forEach(sec => {
+            sec.classList.remove('active');
+            sec.style.display = 'none';
+        });
 
-.nav-btn {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    position: relative;
-    z-index: 9999999 !important;
-}
+        // Tanlangan sahifani ko'rsatish
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            targetPage.style.display = 'block';
+        }
 
-/* Bolalar elementlari bosish hodisasiga xaqit bermasligi uchun */
-.nav-btn * {
-    pointer-events: none !important;
-}
+        // Barcha nav tugmalardan active klassini olib tashlash
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Bosilgan tugmaga active klassini qo'shish
+        if (el) {
+            el.classList.add('active');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Har bir tugmaga to'g'ridan-to'g'ri biriktirish
+    document.addEventListener('DOMContentLoaded', () => {
+        const btns = document.querySelectorAll('.nav-btn');
+        
+        btns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const target = this.getAttribute('data-target');
+                showPage(target, this);
+            });
+        });
+    });
+</script>
