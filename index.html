@@ -4,12 +4,419 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COSMO Market — Premium Shopping</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* NEON MESH FON */
+        body {
+            background-color: #08090d;
+            background-image: 
+                radial-gradient(at 10% 15%, rgba(255, 59, 48, 0.22) 0px, transparent 40%),
+                radial-gradient(at 90% 25%, rgba(138, 43, 226, 0.18) 0px, transparent 45%),
+                radial-gradient(at 50% 75%, rgba(0, 122, 255, 0.15) 0px, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 35px 35px, 35px 35px;
+            background-attachment: fixed;
+            color: #f1f1f1;
+            padding-top: 65px;
+            padding-bottom: 95px;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(12, 14, 22, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ff3b30;
+            letter-spacing: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #ff3b30;
+            font-size: 0.65rem;
+            padding: 2px 5px;
+            border-radius: 10px;
+        }
+
+        /* SAHIFALAR LOGIKASI */
+        .page-section {
+            display: none !important;
+        }
+
+        .page-section.active {
+            display: block !important;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-content {
+            padding: 20px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* BANNER */
+        .banner-slider {
+            padding: 15px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .banner-card {
+            background: linear-gradient(135deg, rgba(60, 15, 20, 0.7) 0%, rgba(20, 22, 35, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 59, 48, 0.35);
+            border-radius: 22px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(255, 59, 48, 0.15);
+        }
+
+        .banner-card .tag {
+            background: #ff3b30;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .banner-card h2 {
+            margin: 10px 0 5px;
+            font-size: 1.5rem;
+        }.banner-card p {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .banner-btn {
+            background: #ffffff;
+            color: #000;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* MAHSULOTLAR GRID */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 5% 15px;
+            max-width: 1000px;
+        }
+
+        .see-all {
+            color: #ff3b30;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .products {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 0 5%;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 18px;
+            padding: 12px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-top {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            right: 18px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        .discount-badge {
+            background: rgba(255, 59, 48, 0.9);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        .fav-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            color: #ccc;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .fav-btn.active {
+            color: #ff3b30;
+        }
+
+        .product-img-wrap {
+            height: 110px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: #ff3b30;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 0.75rem;
+            color: #ffb300;
+            margin-bottom: 4px;
+        }
+
+        .rating span {
+            color: #777;
+        }
+
+        .product-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            height: 32px;
+            overflow: hidden;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .current-price {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .add-cart-btn {
+            background: #ff3b30;
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* QIDIRUV */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 12px 16px;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 100%;
+            font-size: 0.95rem;
+        }.search-suggestions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .tag-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: #ccc;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* KATALOG */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cat-icon {
+            font-size: 2rem;
+            color: #ff3b30;
+            margin-bottom: 8px;
+        }
+
+        .category-card span {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* PROFIL & SAVAT */
+        .profile-header, .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .avatar, .empty-icon {
+            font-size: 3rem;
+            color: #ff3b30;
+            margin-bottom: 10px;
+        }
+
+        .menu-row {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 18px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* FLOATING MENU */
+        .bottom-nav-container {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 500px;
+            z-index: 9999;
+        }
+
+        .glass-navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(18, 20, 29, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            padding: 6px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #8e8e93;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 20px;
+            flex: 1;
+        }
+
+        .nav-btn i { font-size: 1.1rem; }
+        .nav-btn span { font-size: 0.65rem; font-weight: 500; }
+
+        .nav-btn.active {
+            color: #ffffff;
+            background: rgba(255, 59, 48, 0.25);
+            border: 1px solid rgba(255, 59, 48, 0.5);
+        }
+
+        .nav-btn.active i { color: #ff3b30; }
+    </style>
 </head>
 <body>
 
-    <!-- YUQORI HEADER -->
     <header class="top-header">
         <div class="logo">
             <i class="fa-solid fa-bolt"></i>
@@ -21,7 +428,7 @@
         </div>
     </header>
 
-    <!-- 1. BOSH SAHIFA -->
+    <!-- BOSH SAHIFA -->
     <main id="home-page" class="page-section active">
         <section class="banner-slider">
             <div class="banner-card">
@@ -30,26 +437,23 @@
                 <p>Barcha aksessuarlar va gadjetlarga -40% gacha</p>
                 <button class="banner-btn" onclick="openPage('catalog-page', 2)">Katalogga o'tish</button>
             </div>
-        </section>
-
-        <section class="products">
+        </section><section class="products">
             <div class="section-title">
                 <h2>Ommabop Mahsulotlar</h2>
                 <span class="see-all" onclick="openPage('catalog-page', 2)">Barchasi <i class="fa-solid fa-chevron-right"></i></span>
             </div>
-            
             <div class="product-grid" id="product-container"></div>
         </section>
     </main>
 
-    <!-- 2. QIDIRUV SAHIFASI -->
+    <!-- QIDIRUV SAHIFASI -->
     <main id="search-page" class="page-section">
         <div class="page-content">
             <h2>Mahsulotlarni Qidirish</h2>
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search-input" placeholder="Kuler, Noutbuk, Sichqoncha..." oninput="handleSearch()">
-                <i class="fa-solid fa-xmark clear-btn" onclick="clearSearch()"></i>
+                <input type="text" id="search-input" placeholder="Kuler, Sichqoncha, Garnitura..." oninput="handleSearch()">
+                <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="clearSearch()"></i>
             </div>
 
             <div class="search-suggestions">
@@ -59,55 +463,62 @@
                 <button class="tag-btn" onclick="quickSearch('Garnitura')">Garnitura</button>
             </div>
 
-            <div class="product-grid" id="search-results" style="margin-top: 25px;"></div>
+            <div class="product-grid" id="search-results" style="margin-top: 20px; padding: 0;"></div>
         </div>
     </main>
 
-    <!-- 3. KATALOG SAHIFASI -->
+    <!-- KATALOG SAHIFASI -->
     <main id="catalog-page" class="page-section">
         <div class="page-content">
             <h2>Kategoriyalar</h2>
             <div class="category-grid">
-                <div class="category-card" onclick="quickSearch('Kuler')"><div class="cat-icon"><i class="fa-solid fa-fan"></i></div><span>Kulerlar & Sovutgichlar</span></div>
-                <div class="category-card" onclick="quickSearch('Noutbuk')"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div><span>Noutbuklar & PC</span></div>
-                <div class="category-card" onclick="quickSearch('Sichqoncha')"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div><span>Geyming Aksessuarlar</span></div>
-                <div class="category-card" onclick="quickSearch('Garnitura')"><div class="cat-icon"><i class="fa-solid fa-headphones"></i></div><span>Audio & Quloqchinlar</span></div>
-            </div>
-        </div>
-    </main>
-
-    <!-- 4. SAVAT SAHIFASI -->
-    <main id="cart-page" class="page-section">
-        <div class="page-content">
-            <h2>Xarid Savati</h2>
-            <div class="cart-wrapper">
-                <div class="empty-state"><div class="empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-                    <h3>Savatingiz bo'sh</h3>
-                    <p>Bosh sahifadan mahsulot tanlab savatga qo'shing</p>
+                <div class="category-card" onclick="quickSearch('Kuler')">
+                    <div class="cat-icon"><i class="fa-solid fa-fan"></i></div>
+                    <span>Kulerlar</span>
+                </div>
+                <div class="category-card" onclick="quickSearch('Sichqoncha')">
+                    <div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <span>Geyming Aksessuar</span>
+                </div>
+                <div class="category-card" onclick="quickSearch('Garnitura')">
+                    <div class="cat-icon"><i class="fa-solid fa-headphones"></i></div>
+                    <span>Audio & Quloqchin</span>
+                </div>
+                <div class="category-card" onclick="quickSearch('Klaviatura')">
+                    <div class="cat-icon"><i class="fa-solid fa-keyboard"></i></div>
+                    <span>Klaviaturalar</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- 5. PROFIL SAHIFASI -->
+    <!-- SAVAT -->
+    <main id="cart-page" class="page-section">
+        <div class="page-content">
+            <h2>Xarid Savati</h2>
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                <h3>Savatingiz bo'sh</h3>
+                <p style="color: #777; margin-top: 5px;">Bosh sahifadan mahsulot tanlang</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- PROFIL -->
     <main id="profile-page" class="page-section">
         <div class="page-content">
             <div class="profile-header">
                 <div class="avatar"><i class="fa-solid fa-user-astronaut"></i></div>
                 <h3>Foydalanuvchi</h3>
-                <p class="user-status">Premium Mijoz</p>
+                <p style="color: #ff3b30; font-size: 0.8rem; margin-top: 4px;">Premium Mijoz</p>
             </div>
-            
-            <div class="profile-menu">
-                <div class="menu-row"><i class="fa-solid fa-box"></i><span>Mening Buyurtmalarim</span><i class="fa-solid fa-angle-right"></i></div>
-                <div class="menu-row"><i class="fa-solid fa-heart"></i><span>Tanlanganlar</span><i class="fa-solid fa-angle-right"></i></div>
-                <div class="menu-row"><i class="fa-solid fa-gear"></i><span>Sozlamalar</span><i class="fa-solid fa-angle-right"></i></div>
-            </div>
+            <div class="menu-row"><i class="fa-solid fa-box" style="color:#ff3b30;"></i><span>Mening Buyurtmalarim</span></div>
+            <div class="menu-row"><i class="fa-solid fa-heart" style="color:#ff3b30;"></i><span>Tanlanganlar</span></div>
+            <div class="menu-row"><i class="fa-solid fa-gear" style="color:#ff3b30;"></i><span>Sozlamalar</span></div>
         </div>
     </main>
 
-    <!-- BOTTOM FLOATING NAVIGATSIYA -->
-    <div class="bottom-nav-container">
+    <!-- FLOATING NAVIGATSIYA --><div class="bottom-nav-container">
         <nav class="glass-navbar">
             <button class="nav-btn active" onclick="openPage('home-page', 0)">
                 <i class="fa-solid fa-house"></i>
@@ -132,7 +543,89 @@
         </nav>
     </div>
 
-    <!-- JS FAYL -->
-    <script src="script.js"></script>
+    <script>
+        const productsData = [
+            { id: 1, name: "RGB Noutbuk Kuler Sovutgichi", price: "185 000 UZS", discount: "-15%", icon: "fa-fan", rating: 4.9, reviews: 34 },
+            { id: 2, name: "Besprovodnoy Geyming Sichqoncha", price: "210 000 UZS", discount: "-20%", icon: "fa-computer-mouse", rating: 4.8, reviews: 52 },
+            { id: 3, name: "7.1 Surround Igrovoy Garnitura", price: "340 000 UZS", discount: "-10%", icon: "fa-headphones", rating: 5.0, reviews: 18 },
+            { id: 4, name: "Mехаnik RGB Klaviatura", price: "420 000 UZS", discount: "-25%", icon: "fa-keyboard", rating: 4.7, reviews: 89 }
+        ];
+
+        function openPage(pageId, btnIndex) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.remove('active'));
+
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            if (buttons[btnIndex]) {
+                buttons[btnIndex].classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderProducts(items, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            if (items.length === 0) {
+                container.innerHTML = <p style="color: #888; grid-column: 1/-1; text-align: center; padding: 20px;">Mahsulot topilmadi</p>;
+                return;
+            }
+
+            container.innerHTML = items.map(p => 
+                <div class="product-card">
+                    <div class="card-top">
+                        <span class="discount-badge">${p.discount}</span>
+                        <button class="fav-btn" onclick="this.classList.toggle('active')"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="product-img-wrap">
+                        <i class="fa-solid ${p.icon}"></i>
+                    </div>
+                    <div class="rating"><i class="fa-solid fa-star"></i> ${p.rating} <span>(${p.reviews})</span></div>
+                    <div class="product-title">${p.name}</div>
+                    <div class="price-row">
+                        <span class="current-price">${p.price}</span>
+                        <button class="add-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            ).join('');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();if (query === "") {
+                document.getElementById('search-results').innerHTML = "";
+                return;
+            }
+            const filtered = productsData.filter(p => p.name.toLowerCase().includes(query));
+            renderProducts(filtered, 'search-results');
+        }
+
+        function quickSearch(keyword) {
+            openPage('search-page', 1);
+            const input = document.getElementById('search-input');
+            if (input) {
+                input.value = keyword;
+                handleSearch();
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            if (input) {
+                input.value = "";
+                document.getElementById('search-results').innerHTML = "";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(productsData, 'product-container');
+        });
+    </script>
 </body>
 </html>
