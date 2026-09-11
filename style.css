@@ -8,20 +8,17 @@
 body {
     background-color: #0d0e12;
     color: #ffffff;
-    padding-bottom: 110px;
+    padding-bottom: 90px;
     min-height: 100vh;
 }
 
-/* SAHIFALAR ULANISHI */
+/* BO'LIMLARNI YASHIRISH VA KO'RSATISH (BOYAGI USTMA-UST TUSHISHNI TUZATADI) */
 .page-section {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    display: none !important;
 }
 
 .page-section.active {
-    display: block;
-    opacity: 1;
+    display: block !important;
 }
 
 .page-content {
@@ -34,7 +31,7 @@ body {
 /* HERO & MAHSULOTLAR */
 .hero {
     text-align: center;
-    padding: 50px 20px 20px;
+    padding: 40px 20px 20px;
 }
 
 .hero h1 {
@@ -51,14 +48,14 @@ body {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
 }
 
 .product-card, .category-card {
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -75,7 +72,7 @@ body {
 .price {
     color: #ff3b30;
     font-weight: bold;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .buy-btn {
@@ -89,7 +86,7 @@ body {
     cursor: pointer;
 }
 
-/* QIDIRUV VA BO'LIMLAR */
+/* QIDIRUV VA KATALOG */
 .search-box {
     display: flex;
     align-items: center;
@@ -117,63 +114,63 @@ body {
     margin-top: 25px;
 }
 
-/* 1 & 2-RASMDAGI KABI LIQUID GLASS NAVIGATSIYA */
-.floating-nav-container {
+/* RASMINGIZDA QIZIL BILAN BELGILANGAN JOYGA MOS SHAFFAFO MENYU */
+.bottom-nav-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
-    width: 92%;
-    max-width: 460px;
+    width: 95%;
+    max-width: 650px;
+    z-index: 9999;
 }
 
-.liquid-nav {
+.glass-navbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(255, 255, 255, 0.12); /* Oyna effekti */
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 35px;
-    padding: 8px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    background: rgba(20, 22, 30, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 8px 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
-.nav-item {
+.nav-btn {
     background: transparent;
     border: none;
     color: #a0a0a0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 3px;
+    justify-content: center;
+    gap: 8px;
     cursor: pointer;
-    padding: 10px 12px;
-    border-radius: 25px;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 10px 16px;
+    border-radius: 18px;
+    transition: all 0.25s ease;
     flex: 1;
 }
 
-.nav-item i {
-    font-size: 1.2rem;
+.nav-btn i {
+    font-size: 1.1rem;
 }
 
-.nav-item span {
-    font-size: 0.65rem;
-    font-weight: 500;
+.nav-btn span {
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
-/* 2-RASMDAGI KABI QIZIL LIQUID GLOW (NEON NURI) EFFEKTI */
-.nav-item.active {
+/* AKTIV TUGMA (NEON RED EFFEKT) */
+.nav-btn.active {
     color: #ffffff;
-    background: rgba(255, 59, 48, 0.25);
+    background: rgba(255, 59, 48, 0.3);
     border: 1px solid rgba(255, 59, 48, 0.6);
-    box-shadow: 0 0 15px rgba(255, 59, 48, 0.5), inset 0 0 10px rgba(255, 59, 48, 0.3);
-    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 59, 48, 0.4);
 }
 
-.nav-item.active i {
+.nav-btn.active i {
     color: #ff3b30;
 }
