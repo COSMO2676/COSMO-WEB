@@ -5,56 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COSMO Market</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome Ikonkalari -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>COSMO Market</h1>
-        <p>Eksklyuziv mahsulotlar va tezkor xizmat ko'rsatish platformasi</p>
-    </section>
+    <!-- BOSH SAHIFA -->
+    <main id="home" class="page-section active">
+        <section class="hero">
+            <h1>COSMO Market</h1>
+            <p>Eksklyuziv mahsulotlar va tezkor xizmat ko'rsatish platformasi</p>
+        </section>
 
-    <!-- MAHSULOTLAR (PRODUCTS) -->
-    <section class="products">
-        <h2>Ommabop Mahsulotlar</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
-                <h3>VIP Sovg'alar To'plami</h3>
-                <p class="price">250 000 UZS</p>
-                <button class="buy-btn">Sotib olish</button>
+        <section class="products">
+            <h2>Ommabop Mahsulotlar</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>VIP Sovg'alar To'plami</h3>
+                    <p class="price">250 000 UZS</p>
+                    <button class="buy-btn">Sotib olish</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3>Tezkor Etkazib Berish</h3>
+                    <p class="price">Bepul</p>
+                    <button class="buy-btn">Buyurtma berish</button>
+                </div>
             </div>
-            <div class="product-card">
-                <div class="product-img"><i class="fa-solid fa-truck-fast"></i></div>
-                <h3>Tezkor Etkazib Berish</h3>
-                <p class="price">Bepul</p>
-                <button class="buy-btn">Buyurtma berish</button>
+        </section>
+    </main>
+
+    <!-- QIDIRUV SAHIFASI -->
+    <main id="search" class="page-section">
+        <div class="page-content">
+            <h2>Mahsulotlarni Qidirish</h2>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Mahsulot nomini kiriting...">
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- 3-RASMDAGI KABI SHAFFOF, BIR QATORLIK NAVIGATSIYA MENYU -->
+    <!-- KATALOG SAHIFASI -->
+    <main id="catalog" class="page-section">
+        <div class="page-content">
+            <h2>Katalog</h2>
+            <div class="category-list">
+                <div class="category-card"><i class="fa-solid fa-gift"></i><span>Sovg'alar</span></div>
+                <div class="category-card"><i class="fa-solid fa-shirt"></i><span>Kiyim-kechak</span></div>
+                <div class="category-card"><i class="fa-solid fa-mobile-screen-button"></i><span>Elektronika</span></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SAVAT SAHIFASI -->
+    <main id="cart" class="page-section">
+        <div class="page-content">
+            <h2>Savat</h2>
+            <div class="empty-state">
+                <i class="fa-solid fa-cart-flatbed"></i>
+                <p>Savatingiz hozircha bo'sh</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- PROFIL SAHIFASI -->
+    <main id="profile" class="page-section">
+        <div class="page-content">
+            <h2>Mening Profilim</h2>
+            <div class="profile-card">
+                <i class="fa-solid fa-user-circle"></i>
+                <p>Xush kelibsiz!</p>
+                <button class="buy-btn">Tizimga kirish</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- LIQUID GLASS FLOATING NAVIGATSIYA -->
     <div class="floating-nav-container">
-        <nav class="glass-nav">
-            <button class="nav-item active" onclick="selectTab(this)">
+        <nav class="liquid-nav">
+            <button class="nav-item active" onclick="switchPage('home', this)">
                 <i class="fa-solid fa-house"></i>
                 <span>Bosh sahifa</span>
             </button>
-            <button class="nav-item" onclick="selectTab(this)">
+            <button class="nav-item" onclick="switchPage('search', this)">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Qidiruv</span>
             </button>
-            <button class="nav-item" onclick="selectTab(this)">
+            <button class="nav-item" onclick="switchPage('catalog', this)">
                 <i class="fa-solid fa-layer-group"></i>
                 <span>Katalog</span>
             </button>
-            <button class="nav-item" onclick="selectTab(this)">
-                <i class="fa-solid fa-cart-shopping"></i>
+            <button class="nav-item" onclick="switchPage('cart', this)"><i class="fa-solid fa-cart-shopping"></i>
                 <span>Savat</span>
             </button>
-            <button class="nav-item" onclick="selectTab(this)">
+            <button class="nav-item" onclick="switchPage('profile', this)">
                 <i class="fa-solid fa-user"></i>
                 <span>Profil</span>
             </button>
