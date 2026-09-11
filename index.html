@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMO Market</title>
+    <title>COSMO Market — Premium Shopping</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- YUQORI HEADER -->
+    <header class="top-header">
+        <div class="logo">
+            <i class="fa-solid fa-bolt"></i>
+            <span>COSMO</span>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="badge">2</span></button>
+            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+        </div>
+    </header>
+
     <!-- 1. BOSH SAHIFA -->
     <main id="home-page" class="page-section active">
-        <section class="hero">
-            <h1>COSMO Market</h1>
-            <p>Eksklyuziv mahsulotlar va tezkor xizmat ko'rsatish platformasi</p>
+        <section class="banner-slider">
+            <div class="banner-card">
+                <span class="tag">MEGASALE</span>
+                <h2>Kuzgi Chegirmalar!</h2>
+                <p>Barcha aksessuarlar va gadjetlarga -40% gacha</p>
+                <button class="banner-btn" onclick="openPage('catalog-page', document.querySelectorAll('.nav-btn')[2])">Katalogga o'tish</button>
+            </div>
         </section>
 
         <section class="products">
-            <h2>Ommabop Mahsulotlar</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
-                    <h3>VIP Sovg'alar To'plami</h3>
-                    <p class="price">250 000 UZS</p>
-                    <button class="buy-btn">Sotib olish</button>
-                </div>
-                <div class="product-card">
-                    <div class="product-img"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h3>Tezkor Etkazib Berish</h3>
-                    <p class="price">Bepul</p>
-                    <button class="buy-btn">Buyurtma berish</button>
-                </div>
+            <div class="section-title">
+                <h2>Ommabop Mahsulotlar</h2>
+                <span class="see-all">Barchasi <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+            
+            <div class="product-grid" id="product-container">
+                <!-- JS orqali va dinamik render bo'ladi -->
             </div>
         </section>
     </main>
@@ -41,30 +50,44 @@
             <h2>Mahsulotlarni Qidirish</h2>
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Mahsulot nomini kiriting...">
+                <input type="text" id="search-input" placeholder="Kuler, Noutbuk, Quloqchin..." oninput="handleSearch()">
+                <i class="fa-solid fa-xmark clear-btn" onclick="clearSearch()"></i>
             </div>
+
+            <div class="search-suggestions">
+                <span>Mashhur:</span>
+                <button class="tag-btn" onclick="quickSearch('Kuler')">Kuler</button>
+                <button class="tag-btn" onclick="quickSearch('Sichqoncha')">Sichqoncha</button>
+                <button class="tag-btn" onclick="quickSearch('Garnitura')">Garnitura</button>
+            </div>
+
+            <div class="product-grid" id="search-results" style="margin-top: 25px;"></div>
         </div>
     </main>
 
     <!-- 3. KATALOG SAHIFASI -->
     <main id="catalog-page" class="page-section">
         <div class="page-content">
-            <h2>Katalog</h2>
-            <div class="category-list">
-                <div class="category-card"><i class="fa-solid fa-gift"></i><span>Sovg'alar</span></div>
-                <div class="category-card"><i class="fa-solid fa-shirt"></i><span>Kiyim-kechak</span></div>
-                <div class="category-card"><i class="fa-solid fa-mobile-screen-button"></i><span>Elektronika</span></div>
+            <h2>Kategoriyalar</h2>
+            <div class="category-grid">
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-fan"></i></div><span>Kulerlar & Sovutgichlar</span></div>
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div><span>Noutbuklar & PC</span></div>
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-gamepad"></i></div><span>Geyming Aksessuarlar</span></div>
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-headphones"></i></div><span>Audio & Quloqchinlar</span></div>
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-mobile-screen-button"></i></div><span>Smartfonlar</span></div>
+                <div class="category-card"><div class="cat-icon"><i class="fa-solid fa-plug"></i></div><span>Krab va Kabellar</span></div>
             </div>
         </div>
-    </main>
-
-    <!-- 4. SAVAT SAHIFASI -->
+    </main><!-- 4. SAVAT SAHIFASI -->
     <main id="cart-page" class="page-section">
         <div class="page-content">
-            <h2>Savat</h2>
-            <div class="empty-state">
-                <i class="fa-solid fa-cart-flatbed"></i>
-                <p>Savatingiz hozircha bo'sh</p>
+            <h2>Xarid Savati</h2>
+            <div class="cart-wrapper">
+                <div class="empty-state" id="cart-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                    <h3>Savatingiz bo'sh</h3>
+                    <p>Bosh sahifadan mahsulot tanlab savatga qo'shing</p>
+                </div>
             </div>
         </div>
     </main>
@@ -72,16 +95,22 @@
     <!-- 5. PROFIL SAHIFASI -->
     <main id="profile-page" class="page-section">
         <div class="page-content">
-            <h2>Mening Profilim</h2>
-            <div class="profile-card">
-                <i class="fa-solid fa-user-circle"></i>
-                <p>Xush kelibsiz!</p>
-                <button class="buy-btn">Tizimga kirish</button>
+            <div class="profile-header">
+                <div class="avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                <h3>Foydalanuvchi</h3>
+                <p class="user-status">Premium Mijoz</p>
+            </div>
+            
+            <div class="profile-menu">
+                <div class="menu-row"><i class="fa-solid fa-box"></i><span>Mening Buyurtmalarim</span><i class="fa-solid fa-angle-right"></i></div>
+                <div class="menu-row"><i class="fa-solid fa-heart"></i><span>Tanlanganlar</span><i class="fa-solid fa-angle-right"></i></div>
+                <div class="menu-row"><i class="fa-solid fa-credit-card"></i><span>To'lov usullari</span><i class="fa-solid fa-angle-right"></i></div>
+                <div class="menu-row"><i class="fa-solid fa-gear"></i><span>Sozlamalar</span><i class="fa-solid fa-angle-right"></i></div>
             </div>
         </div>
     </main>
 
-    <!-- RASMDA QIZIL BILAN CHIZILGAN JOYDAGI SHAFFOF MENYU -->
+    <!-- PREMIUM LIQUID GLASS FLOATING NAVIGATSIYA -->
     <div class="bottom-nav-container">
         <nav class="glass-navbar">
             <button class="nav-btn active" onclick="openPage('home-page', this)">
@@ -95,7 +124,8 @@
             <button class="nav-btn" onclick="openPage('catalog-page', this)">
                 <i class="fa-solid fa-layer-group"></i>
                 <span>Katalog</span>
-            </button><button class="nav-btn" onclick="openPage('cart-page', this)">
+            </button>
+            <button class="nav-btn" onclick="openPage('cart-page', this)">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span>Savat</span>
             </button>
@@ -106,7 +136,6 @@
         </nav>
     </div>
 
-    <!-- JS FAYLNI ULASH -->
     <script src="script.js"></script>
 </body>
 </html>
