@@ -5,21 +5,21 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* KOSMIK NEON NURLI ZAMONAVIY ORQAFON */
 body {
-    background-color: #090a0f;
+    background-color: #08090d;
     background-image: 
-        radial-gradient(at 15% 15%, rgba(255, 59, 48, 0.18) 0px, transparent 45%),
-        radial-gradient(at 85% 30%, rgba(120, 40, 200, 0.15) 0px, transparent 50%),
-        radial-gradient(at 50% 80%, rgba(0, 122, 255, 0.12) 0px, transparent 50%),
+        radial-gradient(at 10% 15%, rgba(255, 59, 48, 0.22) 0px, transparent 40%),
+        radial-gradient(at 90% 25%, rgba(138, 43, 226, 0.18) 0px, transparent 45%),
+        radial-gradient(at 50% 75%, rgba(0, 122, 255, 0.15) 0px, transparent 50%),
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 35px 35px, 35px 35px;
     background-attachment: fixed;
     color: #f1f1f1;
     padding-top: 65px;
     padding-bottom: 95px;
     min-height: 100vh;
-}
 }
 
 /* TOP HEADER */
@@ -29,8 +29,9 @@ body {
     left: 0;
     right: 0;
     height: 60px;
-    background: rgba(15, 17, 26, 0.85);
+    background: rgba(12, 14, 22, 0.85);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: space-between;
@@ -75,7 +76,7 @@ body {
     border-radius: 10px;
 }
 
-/* SAHIFALAR */
+/* SAHIFALARNI BOSHQRISH */
 .page-section {
     display: none !important;
 }
@@ -96,7 +97,7 @@ body {
     margin: 0 auto;
 }
 
-/* BANNER SLIDER */
+/* BANNER SLIDER (GLASS / NEON GLOW) */
 .banner-slider {
     padding: 15px 5%;
     max-width: 1000px;
@@ -104,13 +105,15 @@ body {
 }
 
 .banner-card {
-    background: linear-gradient(135deg, #1e0505 0%, #3a0d0d 50%, #151621 100%);
-    border: 1px solid rgba(255, 59, 48, 0.3);
-    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(60, 15, 20, 0.7) 0%, rgba(20, 22, 35, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 59, 48, 0.35);
+    border-radius: 22px;
     padding: 25px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(255, 59, 48, 0.15);
+    box-shadow: 0 10px 30px rgba(255, 59, 48, 0.2);
 }
 
 .banner-card .tag {
@@ -140,9 +143,14 @@ body {
     border-radius: 12px;
     font-weight: 700;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* MAHSULOTLAR GRID VA CARD */
+.banner-btn:hover {
+    background: #e0e0e0;
+}
+
+/* MAHSULOTLAR GRID VA GLASS KARTOCHKALAR */
 .section-title {
     display: flex;
     justify-content: space-between;
@@ -163,20 +171,22 @@ body {
 }
 
 .product-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 18px;
     padding: 12px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .product-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 59, 48, 0.4);
+    border-color: rgba(255, 59, 48, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .card-top {
@@ -213,7 +223,7 @@ body {
 
 .product-img-wrap {
     height: 120px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -221,7 +231,9 @@ body {
     font-size: 3rem;
     color: #ff3b30;
     margin-bottom: 10px;
-}.rating {
+}
+
+.rating {
     font-size: 0.75rem;
     color: #ffb300;
     margin-bottom: 4px;
@@ -263,12 +275,13 @@ body {
     cursor: pointer;
 }
 
-/* QIDIRUV */
+/* QIDIRUV BO'LIMI */
 .search-box {
     position: relative;
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
     padding: 12px 16px;
@@ -319,7 +332,8 @@ body {
 }
 
 .category-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 20px 10px;
@@ -384,9 +398,7 @@ body {
 
 .menu-row i:first-child {
     color: #ff3b30;
-}
-
-.menu-row i:last-child {
+}.menu-row i:last-child {
     margin-left: auto;
     color: #555;
 }
@@ -412,7 +424,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* PREMIUM FLOATING LIQUID GLASS NAVIGATSIYA */
+/* FLOATING LIQUID GLASS NAVIGATSIYA */
 .bottom-nav-container {
     position: fixed;
     bottom: 15px;
@@ -427,10 +439,10 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(18, 20, 29, 0.7);
+    background: rgba(18, 20, 29, 0.75);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 28px;
     padding: 6px 8px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
@@ -450,7 +462,9 @@ body {
     border-radius: 20px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     flex: 1;
-}.nav-btn i {
+}
+
+.nav-btn i {
     font-size: 1.15rem;
 }
 
